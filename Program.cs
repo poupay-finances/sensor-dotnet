@@ -23,7 +23,7 @@ namespace Dht11Device
         private static DeviceClient deviceClient;
 
         // The device connection string to authenticate the device with your IoT hub.
-        private readonly static string deviceConnectionString = "HostName=azhub-poupay.azure-devices.net;DeviceId=azdisp-poupay;SharedAccessKey=JIfO8TGW0VTvKrG630gcpYu+vqHbCXq1YXwglY7V45Y=";
+        private readonly static string deviceConnectionString = "$CONNECTION_STRING";
 
         private static void Main(string[] args)
         {
