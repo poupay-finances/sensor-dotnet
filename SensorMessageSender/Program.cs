@@ -15,7 +15,7 @@ namespace SensorMessageSender
         // IoT Hub Device Client
         private static DeviceClient deviceClient;
 
-        // Device connection string para autenticação com o IoT hub
+        // Device connection string para autenticação com o IoT hub, configurar valor no App.config
         private readonly static string deviceConnectionString = ConfigurationManager.ConnectionStrings["deviceConnectionString"].ConnectionString;
 
         private static void Main(string[] args)
