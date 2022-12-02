@@ -53,6 +53,7 @@ namespace SensorMessageSender
                 energy -= energyLess;
             }
 
+            ConsoleHelper.WriteColorMessage("Dead battery", ConsoleColor.Red);
             System.Environment.Exit(0);
         }
 
