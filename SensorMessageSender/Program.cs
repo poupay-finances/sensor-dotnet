@@ -15,6 +15,7 @@ namespace SensorMessageSender
         // IoT Hub Device Client
         private static DeviceClient deviceClient;
 
+
         // Device connection string para autenticação com o IoT hub, configurar valor no App.config
         private readonly static string deviceConnectionString = ConfigurationManager.ConnectionStrings["deviceConnectionString"].ConnectionString;
 
@@ -34,19 +35,25 @@ namespace SensorMessageSender
         private static async void SendDeviceToCloudMessagesAsync()
         {
 
+            // Bateria do dispositivo
+            int energy = 100;
+            int energyLess = 2;
+
             Dht11 objGeracao = new Dht11();
 
-            while (true)
+            while (energy > 0)
             {
                 double humidity = objGeracao.getHumidity();
                 double temperature = objGeracao.getTemperature();
 
                 await CreateTelemetryMessage(temperature, humidity);
-
                 await CreateLoggingMessage(temperature, humidity);
-
                 await Task.Delay(intervalInMilliseconds);
+
+                energy -= energyLess;
             }
+
+            System.Environment.Exit(0);
         }
 
         private static async Task CreateTelemetryMessage(
