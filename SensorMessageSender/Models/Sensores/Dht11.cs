@@ -8,12 +8,12 @@
             baseTemperature = randomNumber(minTemperature, maxTemperature);
         }
 
-        private static int minHumidity = 30;
+        private static int minHumidity = 5;
         private static int maxHumidity = 98;
         private double baseHumidity = 0;
 
-        private static int minTemperature = 20;
-        private static int maxTemperature = 38;
+        private static int minTemperature = 10;
+        private static int maxTemperature = 50;
         private double baseTemperature = 0;
 
         internal double randomNumber(int min, int max)
