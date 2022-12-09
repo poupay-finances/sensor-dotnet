@@ -11,6 +11,7 @@ namespace SensorMessageSender
     {
         // Tempo de delay entre os envios de mensagens
         private const int intervalInMilliseconds = 1000;
+        private const int energyLess = 2;
 
         // IoT Hub Device Client
         private static DeviceClient deviceClient;
@@ -56,7 +57,6 @@ namespace SensorMessageSender
 
             // Bateria do dispositivo
             int energy = 100;
-            int energyLess = 2;
 
             Dht11 objGeracao = new Dht11();
 
@@ -87,9 +87,13 @@ namespace SensorMessageSender
             var telemetryMessageString = JsonConvert.SerializeObject(telemetryDataPoint);
             var telemetryMessage = new Message(Encoding.ASCII.GetBytes(telemetryMessageString));
 
+            // Última mensagem antes do dispositivo descarregar
+            bool lastMessage = energy - energyLess <= 0;
+
             // Propriedade que indica que essa mensagem cumprirá a consulta de roteamento e ativar o trigger do log - false
             telemetryMessage.Properties.Add("sensorID", deviceId);
             telemetryMessage.Properties.Add("energy", energy.ToString());
+            telemetryMessage.Properties.Add("lastWillMessage", lastMessage.ToString());
 
             Console.WriteLine($"Telemetry data: {telemetryMessageString}");
 
