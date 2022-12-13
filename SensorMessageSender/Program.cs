@@ -80,6 +80,7 @@ namespace SensorMessageSender
         {
             var telemetryDataPoint = new
             {
+                deviceId = deviceId,
                 temperature = Math.Round(temperature, 2),
                 humidity = humidity,
             };
