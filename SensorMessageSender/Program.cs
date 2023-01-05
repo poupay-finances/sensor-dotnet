@@ -91,7 +91,7 @@ namespace SensorMessageSender
             // Última mensagem antes do dispositivo descarregar
             bool lastMessage = energy - energyLess <= 0;
 
-            // Propriedade que indica que essa mensagem cumprirá a consulta de roteamento e ativar o trigger do log - false
+            // Propriedade que indica que essa mensagem cumprirá a consulta de roteamento e ativara o trigger do log - false
             telemetryMessage.Properties.Add("sensorID", deviceId);
             telemetryMessage.Properties.Add("energy", energy.ToString());
             telemetryMessage.Properties.Add("lastWillMessage", lastMessage.ToString());
